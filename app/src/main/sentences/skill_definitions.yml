@@ -1,11 +1,8 @@
 skills:
-  - id: aiquery
-    specificity: low
+  - id: current_time
+    specificity: high
     sentences:
       - id: query
-        captures:
-          - id: question
-            type: string
 
   - id: calculator
     specificity: medium
@@ -14,7 +11,6 @@ skills:
         captures:
           - id: calculation
             type: string
-
   - id: calculator_operators
     specificity: low
     sentences:
@@ -25,28 +21,20 @@ skills:
       - id: power
       - id: square_root
 
-  - id: current_time
-    specificity: high
-    sentences:
-      - id: query
-
-  - id: joke
-    specificity: high
-    sentences:
-      - id: command
-
-  - id: listening
-    specificity: high
-    sentences:
-      - id: stop
-      - id: start
-
   - id: lyrics
     specificity: high
     sentences:
       - id: query
         captures:
           - id: song
+            type: string
+
+  - id: navigation
+    specificity: high
+    sentences:
+      - id: query
+        captures:
+          - id: where
             type: string
 
   - id: media
@@ -57,13 +45,10 @@ skills:
       - id: previous
       - id: next
 
-  - id: navigation
+  - id: joke
     specificity: high
     sentences:
-      - id: query
-        captures:
-          - id: where
-            type: string
+      - id: command
 
   - id: open
     specificity: medium
@@ -72,6 +57,12 @@ skills:
         captures:
           - id: what
             type: string
+
+  - id: listening
+    specificity: high
+    sentences:
+      - id: stop
+      - id: start
 
   - id: search
     specificity: low
@@ -107,18 +98,6 @@ skills:
           - id: name
             type: string
 
-  - id: translation
-    specificity: high
-    sentences:
-      - id: translate
-        captures:
-          - id: query
-            type: string
-          - id: source
-            type: string
-          - id: target
-            type: string
-
   - id: util_yes_no
     specificity: high
     sentences:
@@ -131,4 +110,24 @@ skills:
       - id: current
         captures:
           - id: where
+            type: string
+
+  - id: translation
+    specificity: high
+    sentences:
+      - id: translate
+        captures:
+          - id: query
+            type: string
+          - id: source
+            type: string
+          - id: target
+            type: string
+
+  - id: aiquery
+    specificity: low
+    sentences:
+      - id: query
+        captures:
+          - id: question
             type: string
