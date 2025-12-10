@@ -246,4 +246,13 @@
     <string name="failed_to_copy">Failed to copy to clipboard</string>
     <string name="skill_translation_auto">Auto</string>
     <string name="skill_search_duckduckgo_recaptcha">DuckDuckGo did not provide results, asking for a Captcha to be solved</string>
+    <string name="skill_name_chatgpt">ChatGPT</string>
+    <string name="skill_sentence_example_chatgpt">Ask ChatGPT what is the meaning of life</string>
+    <string name="skill_chatgpt_error">Could not get a response from ChatGPT</string>
+    <string name="pref_chatgpt_api_key">OpenAI API Key</string>
+    <string name="pref_chatgpt_api_key_description">Enter your OpenAI API key</string>
+    <string name="pref_chatgpt_model">Model</string>
+    <string name="pref_chatgpt_model_description">Default: gpt-4o-mini</string>
+    <string name="pref_chatgpt_system_prompt">System Prompt</string>
+    <string name="pref_chatgpt_system_prompt_description">Customize the AI behavior</string>
 </resources>

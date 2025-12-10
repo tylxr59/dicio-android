@@ -1,9 +1,4 @@
 skills:
-  - id: current_time
-    specificity: high
-    sentences:
-      - id: query
-
   - id: calculator
     specificity: medium
     sentences:
@@ -11,6 +6,7 @@ skills:
         captures:
           - id: calculation
             type: string
+
   - id: calculator_operators
     specificity: low
     sentences:
@@ -20,6 +16,19 @@ skills:
       - id: division
       - id: power
       - id: square_root
+
+  - id: chatgpt
+    specificity: low
+    sentences:
+      - id: query
+        captures:
+          - id: question
+            type: string
+
+  - id: current_time
+    specificity: high
+    sentences:
+      - id: query
 
   - id: lyrics
     specificity: high
@@ -98,6 +107,18 @@ skills:
           - id: name
             type: string
 
+  - id: translation
+    specificity: high
+    sentences:
+      - id: translate
+        captures:
+          - id: query
+            type: string
+          - id: source
+            type: string
+          - id: target
+            type: string
+
   - id: util_yes_no
     specificity: high
     sentences:
@@ -110,16 +131,4 @@ skills:
       - id: current
         captures:
           - id: where
-            type: string
-
-  - id: translation
-    specificity: high
-    sentences:
-      - id: translate
-        captures:
-          - id: query
-            type: string
-          - id: source
-            type: string
-          - id: target
             type: string
