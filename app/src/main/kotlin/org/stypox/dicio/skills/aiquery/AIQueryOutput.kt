@@ -1,4 +1,4 @@
-package org.stypox.dicio.skills.chatgpt
+package org.stypox.dicio.skills.aiquery
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.runtime.Composable
@@ -9,13 +9,13 @@ import org.stypox.dicio.io.graphical.Headline
 import org.stypox.dicio.io.graphical.Subtitle
 import org.stypox.dicio.util.getString
 
-class ChatGptOutput(
+class AIQueryOutput(
     private val response: String?,
     private val question: String,
 ) : SkillOutput {
     
     override fun getSpeechOutput(ctx: SkillContext) = if (response == null) {
-        ctx.getString(R.string.skill_chatgpt_error)
+        ctx.getString(R.string.skill_aiquery_error)
     } else {
         response
     }

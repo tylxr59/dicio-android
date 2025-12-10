@@ -17,7 +17,7 @@ skills:
       - id: power
       - id: square_root
 
-  - id: chatgpt
+  - id: aiquery
     specificity: low
     sentences:
       - id: query
