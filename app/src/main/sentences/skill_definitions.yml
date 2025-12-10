@@ -1,4 +1,12 @@
 skills:
+  - id: aiquery
+    specificity: low
+    sentences:
+      - id: query
+        captures:
+          - id: question
+            type: string
+
   - id: calculator
     specificity: medium
     sentences:
@@ -17,18 +25,21 @@ skills:
       - id: power
       - id: square_root
 
-  - id: aiquery
-    specificity: low
-    sentences:
-      - id: query
-        captures:
-          - id: question
-            type: string
-
   - id: current_time
     specificity: high
     sentences:
       - id: query
+
+  - id: joke
+    specificity: high
+    sentences:
+      - id: command
+
+  - id: listening
+    specificity: high
+    sentences:
+      - id: stop
+      - id: start
 
   - id: lyrics
     specificity: high
@@ -36,14 +47,6 @@ skills:
       - id: query
         captures:
           - id: song
-            type: string
-
-  - id: navigation
-    specificity: high
-    sentences:
-      - id: query
-        captures:
-          - id: where
             type: string
 
   - id: media
@@ -54,10 +57,13 @@ skills:
       - id: previous
       - id: next
 
-  - id: joke
+  - id: navigation
     specificity: high
     sentences:
-      - id: command
+      - id: query
+        captures:
+          - id: where
+            type: string
 
   - id: open
     specificity: medium
@@ -66,12 +72,6 @@ skills:
         captures:
           - id: what
             type: string
-
-  - id: listening
-    specificity: high
-    sentences:
-      - id: stop
-      - id: start
 
   - id: search
     specificity: low
