@@ -113,13 +113,13 @@ enum class Unit(
         { it * 2589988.110336 }, { it / 2589988.110336 }),
 
     // SPEED (base: meters per second)
-    METERS_PER_SECOND(UnitType.SPEED, listOf("meter per second", "meters per second", "metre per second", "metres per second"), listOf("m/s", "mps"),
+    METERS_PER_SECOND(UnitType.SPEED, listOf("meter per second", "meters per second", "metre per second", "metres per second", "meter a second", "meters a second", "metre a second", "metres a second"), listOf("m/s", "mps"),
         { it }, { it }),
-    KILOMETERS_PER_HOUR(UnitType.SPEED, listOf("kilometer per hour", "kilometers per hour", "kilometre per hour", "kilometres per hour"), listOf("km/h", "kmph", "kph"),
+    KILOMETERS_PER_HOUR(UnitType.SPEED, listOf("kilometer per hour", "kilometers per hour", "kilometre per hour", "kilometres per hour", "kilometer an hour", "kilometers an hour", "kilometre an hour", "kilometres an hour"), listOf("km/h", "kmph", "kph"),
         { it / 3.6 }, { it * 3.6 }),
-    MILES_PER_HOUR(UnitType.SPEED, listOf("mile per hour", "miles per hour"), listOf("mph", "mi/h"),
+    MILES_PER_HOUR(UnitType.SPEED, listOf("mile per hour", "miles per hour", "mile an hour", "miles an hour"), listOf("mph", "mi/h"),
         { it * 0.44704 }, { it / 0.44704 }),
-    FEET_PER_SECOND(UnitType.SPEED, listOf("foot per second", "feet per second"), listOf("ft/s", "fps"),
+    FEET_PER_SECOND(UnitType.SPEED, listOf("foot per second", "feet per second", "foot a second", "feet a second"), listOf("ft/s", "fps"),
         { it * 0.3048 }, { it / 0.3048 }),
     KNOT(UnitType.SPEED, listOf("knot", "knots"), listOf("kn", "kt"),
         { it * 0.514444 }, { it / 0.514444 }),

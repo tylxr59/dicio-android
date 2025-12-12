@@ -54,7 +54,13 @@ class UnitConversionSkill(
                 }
                 
                 if (value == null) {
-                    return UnitConversionOutput.Error("Could not parse the number value")
+                    // Fallback: check if the text starts with "a " or "an " (e.g., "a gallon")
+                    val normalized = valueWithUnitText.lowercase().trim()
+                    if (normalized.startsWith("a ") || normalized.startsWith("an ")) {
+                        value = 1.0
+                    } else {
+                        return UnitConversionOutput.Error("Could not parse the number value")
+                    }
                 }
                 
                 // Extract source unit from the remaining text
