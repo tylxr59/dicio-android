@@ -246,4 +246,8 @@
     <string name="failed_to_copy">Failed to copy to clipboard</string>
     <string name="skill_translation_auto">Auto</string>
     <string name="skill_search_duckduckgo_recaptcha">DuckDuckGo did not provide results, asking for a Captcha to be solved</string>
+    <string name="skill_name_unit_conversion">Unit conversion</string>
+    <string name="skill_sentence_example_unit_conversion">Convert 5 kilometers to miles</string>
+    <string name="skill_unit_conversion_result">%1$s %2$s is %3$s %4$s</string>
+    <string name="skill_unit_conversion_error">%1$s</string>
 </resources>
