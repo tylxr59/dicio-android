@@ -246,4 +246,30 @@
     <string name="failed_to_copy">Failed to copy to clipboard</string>
     <string name="skill_translation_auto">Auto</string>
     <string name="skill_search_duckduckgo_recaptcha">DuckDuckGo did not provide results, asking for a Captcha to be solved</string>
+
+    <!-- About screen -->
+    <string name="about">About</string>
+    <string name="about_dicio">About Dicio</string>
+    <string name="about_description">Free and open source voice assistant</string>
+    <string name="about_version">Version</string>
+    <string name="about_app_info">App information</string>
+    <string name="about_application_id">Application ID</string>
+    <string name="about_build_info">Build information</string>
+    <string name="about_version_code">Version code</string>
+    <string name="about_links">Links</string>
+    <string name="about_source_code">Source code</string>
+    <string name="about_report_issue">Report an issue</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_legal">Legal</string>
+    <string name="about_license">License</string>
+    <string name="about_license_gpl">GNU General Public License v3.0</string>
+    <string name="about_privacy_policy">Privacy policy</string>
+    <string name="about_credits">Credits</string>
+    <string name="about_contributors">Contributors</string>
+    <string name="about_contributors_description">Dicio is made possible by contributors around the world</string>
+    <string name="about_copy_version_info">Copy version info</string>
+    
+    <!-- Privacy screen -->
+    <string name="privacy_policy">Privacy policy</string>
+    <string name="privacy_intro">Dicio respects your privacy and processes all data locally on your device.</string>
 </resources>
