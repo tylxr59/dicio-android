@@ -1,0 +1,11 @@
+turn_on:
+  - (switch|turn) on the? (flashlight|torch|flash|light)
+  - (switch|turn) the? (flashlight|torch|flash|light) on
+  - (flashlight|torch|flash|light) on
+  - (activate|enable) the? (flashlight|torch|flash|light)
+
+turn_off:
+  - (switch|turn) off the? (flashlight|torch|flash|light)
+  - (switch|turn) the? (flashlight|torch|flash|light) off
+  - (flashlight|torch|flash|light) off
+  - (deactivate|disable) the? (flashlight|torch|flash|light)
