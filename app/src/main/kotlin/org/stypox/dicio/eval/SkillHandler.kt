@@ -20,6 +20,7 @@ import org.stypox.dicio.settings.datastore.UserSettingsModule
 import org.stypox.dicio.settings.datastore.FallbackSkill
 import org.stypox.dicio.skills.alarm.AlarmInfo
 import org.stypox.dicio.skills.calculator.CalculatorInfo
+import org.stypox.dicio.skills.cancel.CancelInfo
 import org.stypox.dicio.skills.current_time.CurrentTimeInfo
 import org.stypox.dicio.skills.fallback.text.TextFallbackInfo
 import org.stypox.dicio.skills.listening.ListeningInfo
@@ -70,6 +71,11 @@ class SkillHandler @Inject constructor(
         FlashlightInfo,
     )
 
+    // Hidden skills that are always enabled but don't appear in menus
+    private val hiddenSkillInfoList = listOf(
+        CancelInfo,
+    )
+
     private val fallbackSkillInfoList = listOf(
         TextFallbackInfo,
         AIQueryInfo,
@@ -107,8 +113,16 @@ class SkillHandler @Inject constructor(
 
                     _enabledSkillsInfo.value = newEnabledSkillsInfo
                     _skillRanker.value = SkillRanker(
+<<<<<<< HEAD
                         newEnabledSkillsInfo.map(::buildSkillFromInfo),
                         buildSkillFromInfo(fallbackSkillInfo),
+=======
+                        newEnabledSkillsInfo.map(::buildSkillFromInfo)
+                            + hiddenSkillInfoList
+                                .filter { it.isAvailable(skillContext) }
+                                .map(::buildSkillFromInfo),
+                        buildSkillFromInfo(fallbackSkillInfoList[0]),
+>>>>>>> origin/add-dismiss-command
                     )
                 }
         }

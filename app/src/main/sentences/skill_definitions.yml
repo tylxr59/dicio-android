@@ -70,6 +70,11 @@ skills:
     sentences:
       - id: turn_on
       - id: turn_off
+      
+  - id: cancel
+    specificity: high
+    sentences:
+      - id: exit
 
   - id: search
     specificity: low
