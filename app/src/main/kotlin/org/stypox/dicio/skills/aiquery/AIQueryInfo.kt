@@ -35,6 +35,7 @@ object AIQueryInfo : SkillInfo("aiquery") {
         Only answer what the user actually asked for.
     """.trimIndent()
 
+     override val categoryNameRes = R.string.category_information
 
     override fun name(context: Context) =
         context.getString(R.string.skill_name_aiquery)

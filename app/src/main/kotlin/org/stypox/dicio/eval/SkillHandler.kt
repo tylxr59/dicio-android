@@ -113,16 +113,11 @@ class SkillHandler @Inject constructor(
 
                     _enabledSkillsInfo.value = newEnabledSkillsInfo
                     _skillRanker.value = SkillRanker(
-<<<<<<< HEAD
-                        newEnabledSkillsInfo.map(::buildSkillFromInfo),
-                        buildSkillFromInfo(fallbackSkillInfo),
-=======
                         newEnabledSkillsInfo.map(::buildSkillFromInfo)
                             + hiddenSkillInfoList
                                 .filter { it.isAvailable(skillContext) }
                                 .map(::buildSkillFromInfo),
-                        buildSkillFromInfo(fallbackSkillInfoList[0]),
->>>>>>> origin/add-dismiss-command
+                        buildSkillFromInfo(fallbackSkillInfo),
                     )
                 }
         }

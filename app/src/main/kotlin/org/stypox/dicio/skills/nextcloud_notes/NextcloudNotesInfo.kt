@@ -22,6 +22,8 @@ import org.stypox.dicio.sentences.Sentences
 import org.stypox.dicio.settings.ui.StringSetting
 
 object NextcloudNotesInfo : SkillInfo("nextcloud_notes") {
+    override val categoryNameRes = R.string.category_productivity
+
     override fun name(context: Context) =
         context.getString(R.string.skill_name_nextcloud_notes)
 

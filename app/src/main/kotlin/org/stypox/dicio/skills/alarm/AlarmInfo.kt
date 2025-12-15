@@ -14,6 +14,8 @@ import org.stypox.dicio.sentences.Sentences
 import org.stypox.dicio.util.PERMISSION_SET_ALARM
 
 object AlarmInfo : SkillInfo("alarm") {
+     override val categoryNameRes = R.string.category_productivity
+
     override fun name(context: Context) =
         context.getString(R.string.skill_name_alarm)
 

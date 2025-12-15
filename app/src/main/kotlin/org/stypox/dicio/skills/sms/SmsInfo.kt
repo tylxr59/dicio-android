@@ -15,6 +15,8 @@ import org.stypox.dicio.util.PERMISSION_READ_CONTACTS
 import org.stypox.dicio.util.PERMISSION_SEND_SMS
 
 object SmsInfo : SkillInfo("sms") {
+    override val categoryNameRes = R.string.category_communication
+
     override fun name(context: Context) =
         context.getString(R.string.skill_name_sms)
 

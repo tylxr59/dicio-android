@@ -70,7 +70,7 @@ skills:
     sentences:
       - id: turn_on
       - id: turn_off
-      
+
   - id: cancel
     specificity: high
     sentences:
@@ -155,6 +155,7 @@ skills:
       - id: add_to_shopping_list
         captures:
           - id: item
+            type: string
           
   - id: unit_conversion
     specificity: high

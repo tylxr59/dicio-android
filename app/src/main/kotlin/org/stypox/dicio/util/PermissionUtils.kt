@@ -27,15 +27,13 @@ val PERMISSION_CALL_PHONE = Permission.NormalPermission(
     name = R.string.perm_call_phone,
     id = Manifest.permission.CALL_PHONE,
 )
-<<<<<<< HEAD
 val PERMISSION_SEND_SMS = Permission.NormalPermission(
     name = R.string.perm_send_sms,
     id = Manifest.permission.SEND_SMS,
-=======
+)
 val PERMISSION_SET_ALARM = Permission.NormalPermission(
     name = R.string.perm_set_alarm,
     id = "com.android.alarm.permission.SET_ALARM",
->>>>>>> origin/clock-skills-rebuild
 )
 
 /**
