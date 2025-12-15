@@ -18,6 +18,7 @@ import org.stypox.dicio.di.SkillContextInternal
 import org.stypox.dicio.settings.datastore.UserSettings
 import org.stypox.dicio.settings.datastore.UserSettingsModule
 import org.stypox.dicio.settings.datastore.FallbackSkill
+import org.stypox.dicio.skills.alarm.AlarmInfo
 import org.stypox.dicio.skills.calculator.CalculatorInfo
 import org.stypox.dicio.skills.current_time.CurrentTimeInfo
 import org.stypox.dicio.skills.fallback.text.TextFallbackInfo
@@ -34,12 +35,9 @@ import org.stypox.dicio.skills.timer.TimerInfo
 import org.stypox.dicio.skills.translation.TranslationInfo
 import org.stypox.dicio.skills.weather.WeatherInfo
 import org.stypox.dicio.skills.joke.JokeInfo
-<<<<<<< HEAD
 import org.stypox.dicio.skills.aiquery.AIQueryInfo
 import org.stypox.dicio.skills.unit_conversion.UnitConversionInfo
-=======
 import org.stypox.dicio.skills.flashlight.FlashlightInfo
->>>>>>> origin/add-flashlight-skill
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -60,18 +58,16 @@ class SkillHandler @Inject constructor(
         TelephoneInfo,
         SmsInfo,
         TimerInfo,
+        AlarmInfo,
         CurrentTimeInfo,
         MediaInfo,
         JokeInfo,
         ListeningInfo(dataStore),
         TranslationInfo,
-<<<<<<< HEAD
         AIQueryInfo,
         NextcloudNotesInfo,
         UnitConversionInfo,
-=======
         FlashlightInfo,
->>>>>>> origin/add-flashlight-skill
     )
 
     private val fallbackSkillInfoList = listOf(

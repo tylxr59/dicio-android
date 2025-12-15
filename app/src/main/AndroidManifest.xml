@@ -28,6 +28,9 @@
 
     <!-- the sms skill needs to send text messages -->
     <uses-permission android:name="android.permission.SEND_SMS" />
+    
+    <!-- the timer and alarm skills need to set alarms/timers in the clock app -->
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <!-- allowBackup=false because of a critical nasty bug: https://medium.com/p/924c91bafcac -->
     <application
