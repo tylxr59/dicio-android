@@ -131,7 +131,6 @@ skills:
           - id: target
             type: string
 
-<<<<<<< HEAD
   - id: aiquery
     specificity: low
     sentences:
@@ -160,7 +159,7 @@ skills:
             type: string
           - id: target_unit
             type: string
-=======
+            
   - id: sms
     specificity: low
     sentences:
@@ -170,4 +169,3 @@ skills:
             type: string
           - id: what
             type: string
->>>>>>> origin/add-sms-skill
