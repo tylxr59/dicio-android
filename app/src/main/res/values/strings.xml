@@ -72,12 +72,9 @@
     <string name="pref_appearance">Appearance</string>
     <string name="pref_skills_title">Skills</string>
     <string name="pref_skills_summary">Enable/disable skills and tune their behavior</string>
-<<<<<<< HEAD
     <string name="pref_fallback_skill_title">Fallback Skill</string>
     <string name="pref_fallback_skill_summary">Choose default fallback skill</string>
-=======
     <string name="skills_count">%1$d skills</string>
->>>>>>> origin/condense-main-menu
     <string name="expand">Expand</string>
     <string name="reduce">Reduce</string>
     <string name="pref_theme">Theme</string>
@@ -892,4 +889,9 @@
         <item>gons</item>
     </string-array>
 
+    <string name="skill_name_flashlight">Flashlight</string>
+    <string name="skill_sentence_example_flashlight">Turn on the flashlight</string>
+    <string name="skill_flashlight_turned_on">Flashlight turned on</string>
+    <string name="skill_flashlight_turned_off">Flashlight turned off</string>
+    <string name="skill_flashlight_error">Could not control the flashlight</string>
 </resources>
