@@ -40,7 +40,6 @@ import org.stypox.dicio.util.ShareUtils
 @Composable
 fun AboutScreen(
     navigationIcon: @Composable () -> Unit,
-    navigateToPrivacy: () -> Unit,
 ) {
     val context = LocalContext.current
     val snackbarHostState = remember { SnackbarHostState() }
@@ -172,7 +171,12 @@ fun AboutScreen(
                     title = stringResource(R.string.about_privacy_policy),
                     icon = Icons.Default.Policy,
                     description = stringResource(R.string.privacy_intro),
-                    modifier = Modifier.clickable(onClick = navigateToPrivacy),
+                    modifier = Modifier.clickable {
+                        ShareUtils.openUrlInBrowser(
+                            context,
+                            "https://github.com/Stypox/dicio-android/blob/master/PRIVACY.md"
+                        )
+                    },
                 )
             }
             
@@ -218,7 +222,6 @@ private fun AboutScreenPreview() {
     AppTheme {
         AboutScreen(
             navigationIcon = {},
-            navigateToPrivacy = {},
         )
     }
 }

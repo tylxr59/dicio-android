@@ -21,7 +21,6 @@ import org.stypox.dicio.io.input.stt_popup.SttPopupActivity
 import org.stypox.dicio.settings.MainSettingsScreen
 import org.stypox.dicio.settings.SkillSettingsScreen
 import org.stypox.dicio.ui.about.AboutScreen
-import org.stypox.dicio.ui.about.PrivacyScreen
 import org.stypox.dicio.ui.home.HomeScreen
 
 @Composable
@@ -65,14 +64,7 @@ fun Navigation() {
         }
 
         composable<About> {
-            AboutScreen(
-                navigationIcon = backIcon,
-                navigateToPrivacy = { navController.navigate(Privacy) },
-            )
-        }
-
-        composable<Privacy> {
-            PrivacyScreen(navigationIcon = backIcon)
+            AboutScreen(navigationIcon = backIcon)
         }
     }
 }
