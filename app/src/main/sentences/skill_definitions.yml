@@ -142,4 +142,13 @@ skills:
       - id: add_to_shopping_list
         captures:
           - id: item
+          
+  - id: unit_conversion
+    specificity: high
+    sentences:
+      - id: convert
+        captures:
+          - id: value_with_unit
+            type: string
+          - id: target_unit
             type: string

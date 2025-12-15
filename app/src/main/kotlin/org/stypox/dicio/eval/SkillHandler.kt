@@ -34,6 +34,7 @@ import org.stypox.dicio.skills.translation.TranslationInfo
 import org.stypox.dicio.skills.weather.WeatherInfo
 import org.stypox.dicio.skills.joke.JokeInfo
 import org.stypox.dicio.skills.aiquery.AIQueryInfo
+import org.stypox.dicio.skills.unit_conversion.UnitConversionInfo
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -60,6 +61,7 @@ class SkillHandler @Inject constructor(
         TranslationInfo,
         AIQueryInfo,
         NextcloudNotesInfo,
+        UnitConversionInfo,
     )
 
     private val fallbackSkillInfoList = listOf(
