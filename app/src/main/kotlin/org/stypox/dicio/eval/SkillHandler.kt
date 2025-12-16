@@ -22,6 +22,7 @@ import org.stypox.dicio.skills.alarm.AlarmInfo
 import org.stypox.dicio.skills.calculator.CalculatorInfo
 import org.stypox.dicio.skills.cancel.CancelInfo
 import org.stypox.dicio.skills.current_time.CurrentTimeInfo
+import org.stypox.dicio.skills.definition.DefinitionInfo
 import org.stypox.dicio.skills.fallback.text.TextFallbackInfo
 import org.stypox.dicio.skills.listening.ListeningInfo
 import org.stypox.dicio.skills.lyrics.LyricsInfo
@@ -53,6 +54,7 @@ class SkillHandler @Inject constructor(
         WeatherInfo,
         SearchInfo,
         LyricsInfo,
+        DefinitionInfo,
         OpenInfo,
         CalculatorInfo,
         NavigationInfo,
