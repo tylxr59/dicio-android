@@ -19,6 +19,7 @@ import org.stypox.dicio.settings.datastore.UserSettings
 import org.stypox.dicio.settings.datastore.UserSettingsModule
 import org.stypox.dicio.settings.datastore.FallbackSkill
 import org.stypox.dicio.skills.alarm.AlarmInfo
+import org.stypox.dicio.skills.calendar.CalendarInfo
 import org.stypox.dicio.skills.calculator.CalculatorInfo
 import org.stypox.dicio.skills.cancel.CancelInfo
 import org.stypox.dicio.skills.current_time.CurrentTimeInfo
@@ -58,6 +59,7 @@ class SkillHandler @Inject constructor(
         OpenInfo,
         CalculatorInfo,
         NavigationInfo,
+        CalendarInfo,
         TelephoneInfo,
         SmsInfo,
         TimerInfo,

@@ -184,3 +184,19 @@ skills:
             type: string
           - id: what
             type: string
+
+  - id: calendar
+    specificity: high
+    sentences:
+      - id: create_event
+        captures:
+          - id: title
+            type: string
+          - id: date_time
+            type: string
+          - id: duration
+            type: duration
+      - id: query_events
+        captures:
+          - id: date_time
+            type: string

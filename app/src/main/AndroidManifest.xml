@@ -33,6 +33,9 @@
     
     <!-- the timer and alarm skills need to set alarms/timers in the clock app -->
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+    
+    <!-- the calendar skill needs to read calendar events -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
 
     <!-- allowBackup=false because of a critical nasty bug: https://medium.com/p/924c91bafcac -->
     <application
