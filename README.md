@@ -41,8 +41,12 @@ Currently Dicio answers questions about:
 - **media**: play, pause, previous, next song
 - **translation**: translate from/to any language with **Lingva** - _How do I say Football in German?_
 - **wake word control**: turn on/off the wakeword - _Stop listening_
+<<<<<<< HEAD
 - **unit conversion**: convert currencies, distances, volumes, mass, and more - _Convert 5 liters to gallons_
 - **cryptocurrency prices**: get the latest price of Bitcoin, Ethereum, Cardano, and more - _What is the price of Bitcoin?_
+=======
+- **nextcloud notes**: add notes to a Nextcloud instance, including a separate grocery list - _Take a note to implement Nextcloud support in Dicio_
+>>>>>>> add-nextcloud-notes
 
 ## Speech to text
 
