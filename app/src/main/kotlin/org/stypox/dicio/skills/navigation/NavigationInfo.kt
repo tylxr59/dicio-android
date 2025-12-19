@@ -15,7 +15,7 @@ import org.stypox.dicio.R
 import org.stypox.dicio.sentences.Sentences
 
 object NavigationInfo : SkillInfo("navigation") {
-    override val categoryNameRes = R.string.category_information
+    override val categoryNameRes = R.string.category_utilities
 
     override fun name(context: Context) =
         context.getString(R.string.skill_name_navigation)

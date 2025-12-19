@@ -13,7 +13,7 @@ import org.stypox.dicio.R
 import org.stypox.dicio.sentences.Sentences
 
 object FlashlightInfo : SkillInfo("flashlight") {
-    override val categoryNameRes = R.string.category_other
+    override val categoryNameRes = R.string.category_utilities
 
     override fun name(context: Context) =
         context.getString(R.string.skill_name_flashlight)
