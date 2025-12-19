@@ -21,24 +21,29 @@ class UnitConversionSkill(
                 // Extract target unit
                 val targetUnitText = inputData.targetUnit?.trim()
                 if (targetUnitText.isNullOrBlank()) {
-                    return UnitConversionOutput.Error("Missing target unit")
+                    return UnitConversionOutput.Error(ctx.android.getString(
+                        org.stypox.dicio.R.string.skill_unit_conversion_missing_target_unit))
                 }
                 
                 val targetUnit = Unit.findUnit(targetUnitText, ctx.android.resources)
                 if (targetUnit == null) {
-                    return UnitConversionOutput.Error("Unknown target unit: $targetUnitText")
+                    return UnitConversionOutput.Error(ctx.android.getString(
+                        org.stypox.dicio.R.string.skill_unit_conversion_unknown_target_unit,
+                        targetUnitText))
                 }
 
                 // Parse value and source unit from the combined string
                 val valueWithUnitText = inputData.valueWithUnit?.trim()
                 if (valueWithUnitText.isNullOrBlank()) {
-                    return UnitConversionOutput.Error("Missing value and source unit")
+                    return UnitConversionOutput.Error(ctx.android.getString(
+                        org.stypox.dicio.R.string.skill_unit_conversion_missing_value_and_source_unit))
                 }
                 
                 // Use number parser to extract the number and remaining text
                 val parsed = ctx.parserFormatter?.extractNumber(valueWithUnitText)
                 if (parsed == null) {
-                    return UnitConversionOutput.Error("Could not parse value")
+                    return UnitConversionOutput.Error(ctx.android.getString(
+                        org.stypox.dicio.R.string.skill_unit_conversion_could_not_parse_value))
                 }
                 
                 // Find the number in the mixed list
@@ -61,34 +66,38 @@ class UnitConversionSkill(
                     if (normalized.startsWith("a ") || normalized.startsWith("an ")) {
                         value = 1.0
                     } else {
-                        return UnitConversionOutput.Error("Could not parse the number value")
+                        return UnitConversionOutput.Error(ctx.android.getString(
+                            org.stypox.dicio.R.string.skill_unit_conversion_could_not_parse_number_value))
                     }
                 }
                 
                 // Extract source unit from the remaining text
-                // The mixedList contains the number and text parts, we need to find unit names
-                val sourceUnit = findUnitInText(valueWithUnitText, ctx.android.resources)
+                val sourceUnit = Unit.findUnit(valueWithUnitText, ctx.android.resources)
                 if (sourceUnit == null) {
-                    return UnitConversionOutput.Error("Could not identify source unit in: $valueWithUnitText")
+                    return UnitConversionOutput.Error(ctx.android.getString(
+                        org.stypox.dicio.R.string.skill_unit_conversion_could_not_identify_source_unit,
+                        valueWithUnitText))
                 }
 
                 if (sourceUnit.type != targetUnit.type) {
                     return UnitConversionOutput.Error(
-                        "Cannot convert between ${sourceUnit.type.name.lowercase()} and ${targetUnit.type.name.lowercase()}"
+                        ctx.android.getString(
+                            org.stypox.dicio.R.string.skill_unit_conversion_cannot_convert_between_types,
+                            sourceUnit.type.name.lowercase(),
+                            targetUnit.type.name.lowercase())
                     )
                 }
 
                 // Perform conversion
                 val result = if (sourceUnit.type == UnitType.CURRENCY) {
-                    // Currency conversion via API
                     convertCurrency(value, sourceUnit, targetUnit)
                 } else {
-                    // Standard unit conversion
                     Unit.convert(value, sourceUnit, targetUnit)
                 }
                 
                 if (result == null) {
-                    return UnitConversionOutput.Error("Conversion failed")
+                    return UnitConversionOutput.Error(ctx.android.getString(
+                        org.stypox.dicio.R.string.skill_unit_conversion_conversion_failed))
                 }
 
                 return UnitConversionOutput.Success(
@@ -107,103 +116,18 @@ class UnitConversionSkill(
      * Returns the converted amount with 5 decimal precision, or null if the conversion fails.
      */
     private fun convertCurrency(amount: Double, fromCurrency: Unit, toCurrency: Unit): Double? {
-        if (fromCurrency.type != UnitType.CURRENCY || toCurrency.type != UnitType.CURRENCY) {
-            return null
-        }
-
-        // Extract ISO codes from the unit abbreviations (first abbreviation is the ISO code)
-        val baseCurrency = fromCurrency.abbreviations.firstOrNull() ?: return null
-        val targetCurrency = toCurrency.abbreviations.firstOrNull() ?: return null
+        val baseCurrency = fromCurrency.currencyCode ?: return null
+        val targetCurrency = toCurrency.currencyCode ?: return null
 
         return try {
-            // Build API URL
             val apiUrl = "https://api.frankfurter.dev/v1/latest?base=$baseCurrency&symbols=$targetCurrency"
+            val exchangeRate = ConnectionUtils.getPageJson(apiUrl)
+                .getJSONObject("rates")
+                .getDouble(targetCurrency)
             
-            // Fetch exchange rate from API
-            val response: JSONObject = ConnectionUtils.getPageJson(apiUrl)
-            
-            // Extract the exchange rate from the response
-            // Response format: {"amount":1.0,"base":"USD","date":"2025-12-16","rates":{"EUR":0.84918}}
-            val rates = response.getJSONObject("rates")
-            val exchangeRate = rates.getDouble(targetCurrency)
-            
-            // Calculate converted amount with 5 decimal precision
             val result = amount * exchangeRate
             String.format("%.5f", result).toDouble()
-        } catch (e: Exception) {
-            // Return null on any error (network failure, API error, parsing error)
-            null
-        }
-    }
-
-    private fun findUnitInText(text: String, resources: android.content.res.Resources): Unit? {
-        val normalizedText = text.lowercase()
-        
-        // Try to find a unit by checking if any unit name or abbreviation appears in the text
-        // Sort by length descending to match longer unit names first (e.g., "square meter" before "meter")
-        val allUnits = Unit.values().sortedByDescending { unit ->
-            try {
-                val singularNames = resources.getStringArray(unit.singularNamesResId)
-                val pluralNames = resources.getStringArray(unit.pluralNamesResId)
-                (singularNames.toList() + pluralNames.toList() + unit.abbreviations).maxOfOrNull { it.length } ?: 0
-            } catch (e: Exception) {
-                unit.abbreviations.maxOfOrNull { it.length } ?: 0
-            }
-        }
-        
-        for (unit in allUnits) {
-            // Check localized full names (both singular and plural)
-            try {
-                val singularNames = resources.getStringArray(unit.singularNamesResId)
-                for (name in singularNames) {
-                    if (normalizedText.contains(name.lowercase())) {
-                        return unit
-                    }
-                }
-                
-                val pluralNames = resources.getStringArray(unit.pluralNamesResId)
-                for (name in pluralNames) {
-                    if (normalizedText.contains(name.lowercase())) {
-                        return unit
-                    }
-                }
-            } catch (e: Exception) {
-                // Resource not found, skip
-            }
-            
-            // Check abbreviations (with word boundaries)
-            for (abbr in unit.abbreviations) {
-                // Match abbreviations as whole words or at the end
-                val regex = "\\b${Regex.escape(abbr.lowercase())}\\b".toRegex()
-                if (regex.containsMatchIn(normalizedText)) {
-                    return unit
-                }
-            }
-        }
-        
-        return null
-    }
-
-    private fun extractNumber(ctx: SkillContext, text: String): Double? {
-        // Try to parse as a number using the parser formatter
-        val parsed = ctx.parserFormatter?.extractNumber(text)?.mixedWithText
-        if (!parsed.isNullOrEmpty()) {
-            // Find the first Number object in the mixed list
-            for (item in parsed) {
-                if (item is Number) {
-                    return if (item.isDecimal) {
-                        item.decimalValue()
-                    } else {
-                        item.integerValue().toDouble()
-                    }
-                }
-            }
-        }
-
-        // Fallback: try to parse directly as a numeric string
-        return try {
-            text.trim().toDoubleOrNull()
-        } catch (e: Exception) {
+        } catch (_: Exception) {
             null
         }
     }

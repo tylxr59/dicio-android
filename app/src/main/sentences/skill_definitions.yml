@@ -199,4 +199,11 @@ skills:
       - id: query_events
         captures:
           - id: date_time
+
+  - id: crypto_price
+    specificity: high
+    sentences:
+      - id: price
+        captures:
+          - id: crypto
             type: string

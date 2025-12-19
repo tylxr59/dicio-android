@@ -41,6 +41,7 @@ import org.stypox.dicio.skills.joke.JokeInfo
 import org.stypox.dicio.skills.aiquery.AIQueryInfo
 import org.stypox.dicio.skills.unit_conversion.UnitConversionInfo
 import org.stypox.dicio.skills.flashlight.FlashlightInfo
+import org.stypox.dicio.skills.crypto_price.CryptoPriceInfo
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -73,6 +74,7 @@ class SkillHandler @Inject constructor(
         NextcloudNotesInfo,
         UnitConversionInfo,
         FlashlightInfo,
+        CryptoPriceInfo,
     )
 
     // Hidden skills that are always enabled but don't appear in menus
