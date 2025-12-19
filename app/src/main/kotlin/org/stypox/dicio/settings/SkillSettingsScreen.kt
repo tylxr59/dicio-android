@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.HelpOutline
 import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ElevatedButton
@@ -65,6 +66,10 @@ import org.stypox.dicio.util.commaJoinPermissions
 import org.stypox.dicio.util.requestAnyPermission
 
 const val DICIO_NUMBERS_LINK = "https://github.com/Stypox/dicio-numbers"
+
+fun getSkillWikiUrl(skillId: String): String {
+    return "https://github.com/Stypox/dicio-android/wiki/Skill:$skillId"
+}
 
 @Composable
 fun SkillSettingsScreen(
@@ -301,6 +306,16 @@ private fun SkillSettingsItemHeader(
                     )
                 )
             }
+        }
+        val context = LocalContext.current
+        IconButton(
+            onClick = { ShareUtils.openUrlInBrowser(context, getSkillWikiUrl(skill.id)) },
+        ) {
+            Icon(
+                imageVector = Icons.Default.HelpOutline,
+                contentDescription = stringResource(R.string.help),
+                tint = maybeDisabledColor,
+            )
         }
     }
 }
