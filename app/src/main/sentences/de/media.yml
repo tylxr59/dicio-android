@@ -15,3 +15,24 @@ previous:
 next:
   - skip<e?>|überspring<e?>|ueberspring<e?> das|den|die|ein<e|en?>? audio|film|hör<buch|spiel>|lied|musik<stück?>|podcast|song|stream|stück|track|video
   - spiel<e?>|spring<e?>|geh<e?>? das|den|die|zu<m|r>? nächste<s|n?>|folgende<s|n?> audio|film|hör<buch|spiel>|lied|musik<stück?>|podcast|song|stream|stück|track|video? (in der <warte?>schlange)?
+
+volume_up:
+  - erhöh<e?>|erhöhen|hoch drehen (die? lautstärke|sound|ton|volumen)
+  - lautstärke hoch|rauf
+  - lauter
+  - mach<e?> es lauter
+
+volume_down:
+  - verringer<e?>|verringern|runter drehen (die? lautstärke|sound|ton|volumen)
+  - lautstärke runter
+  - leiser
+  - mach<e?> es leiser
+
+volume_up_times:
+  - erhöh<e?>|erhöhen (die? lautstärke|sound|ton|volumen|es)? .times. mal|schritte?
+  - mach<e?> es .times. mal|schritte? lauter
+
+volume_down_times:
+  - verringer<e?>|verringern (die? lautstärke|sound|ton|volumen|es)? .times. mal|schritte?
+  - mach<e?> es .times. mal|schritte? leiser
+  
