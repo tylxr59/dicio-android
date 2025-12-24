@@ -36,6 +36,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.text.font.FontStyle
@@ -132,15 +134,25 @@ private fun CompactInteractionList(
     val interactions = interactionLog.interactions
     val pendingQuestion = interactionLog.pendingQuestion
     
-    var prevItemCount by remember { mutableIntStateOf(0) }
-    val currentItemCount = interactions.sumOf { it.questionsAnswers.size } + 
-                          if (pendingQuestion != null) 1 else 0
-
-    LaunchedEffect(currentItemCount) {
-        if (currentItemCount > prevItemCount && currentItemCount > 0) {
-            listState.animateScrollToItem(currentItemCount - 1)
+    // Continuously scroll to bottom while there's a pending question
+    LaunchedEffect(pendingQuestion, interactions) {
+        if (pendingQuestion != null) {
+            // Keep scrolling while the question is pending
+            while (isActive && pendingQuestion != null) {
+                val itemCount = listState.layoutInfo.totalItemsCount
+                if (itemCount > 0) {
+                    listState.scrollToItem(itemCount - 1)
+                }
+                delay(150)
+            }
+        } else {
+            // Scroll once when new answer is added
+            val itemCount = listState.layoutInfo.totalItemsCount
+            if (itemCount > 0) {
+                delay(100) // Small delay to let content render
+                listState.animateScrollToItem(itemCount - 1)
+            }
         }
-        prevItemCount = currentItemCount
     }
 
     LazyColumn(
@@ -151,16 +163,13 @@ private fun CompactInteractionList(
         state = listState,
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        // Show recent interactions
         interactions.forEach { interaction ->
             items(interaction.questionsAnswers) { qa ->
                 Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    // User question
                     if (qa.question != null) {
                         CompactQuestionBubble(text = qa.question)
                     }
                     
-                    // Assistant answer
                     CompactAnswerBubble {
                         qa.answer.GraphicalOutput(ctx = skillContext)
                     }
@@ -168,7 +177,6 @@ private fun CompactInteractionList(
             }
         }
 
-        // Pending question
         if (pendingQuestion != null) {
             item {
                 CompactQuestionBubble(
@@ -178,7 +186,6 @@ private fun CompactInteractionList(
             }
         }
 
-        // Add some bottom padding
         item {
             Spacer(modifier = Modifier.height(4.dp))
         }
