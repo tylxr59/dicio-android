@@ -17,6 +17,7 @@ Dicio answers questions about:
 <li><b>unit conversion</b>: convert currencies, distances, volumes, mass, and more - <i>Convert 5 liters to gallons</i></li>
 <li><b>cryptocurrency prices</b>: get the latest price of Bitcoin, Ethereum, Cardano, and more - <i>What is the price of Bitcoin?</i></li>
 <li><b>nextcloud notes</b>: add notes to a Nextcloud instance, including a separate grocery list - <i>Take a note to implement Nextcloud support in Dicio</i></li>
+<li><b>rng</b>: Ask for a random number, flip a coin, or roll dice - <i>Pick a number between 1 and 100</i></li>
 </ul>
 
 Dicio can receive input through a text box or through <a href="https://github.com/alphacep/vosk-api/">Vosk</a> <i>speech to text</i>, and can talk using toasts or the Android <i>speech synthesis</i> engine. <b>Interactive graphical output</b> is provided by skills when they answer a question.
