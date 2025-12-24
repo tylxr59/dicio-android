@@ -45,6 +45,7 @@ Currently Dicio answers questions about:
 - **cryptocurrency prices**: get the latest price of Bitcoin, Ethereum, Cardano, and more - _What is the price of Bitcoin?_
 - **nextcloud notes**: add notes to a Nextcloud instance, including a separate grocery list - _Take a note to implement Nextcloud support in Dicio_
 - **rng**: Ask for a random number, flip a coin, or roll dice - _Pick a number between 1 and 100_
+- **ai query**: talk to an LLM and ask it questions. optionally, send unknown queries to AI to be answered. - _Ask AI what is the meaning of life?_ <sup>Requires your own OpenAI compatible provider and API keys</sup>
 
 ## Speech to text
 
